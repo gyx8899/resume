@@ -373,3 +373,9 @@ a {
     display: none;
   }
 }
+
+@media print {
+  @page {
+    margin: 0;
+  }
+}

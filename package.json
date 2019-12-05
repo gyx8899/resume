@@ -1,7 +1,8 @@
 {
   "scripts": {
     "dev": "webpack-dev-server --open --hot",
-    "pub": "cross-env NODE_ENV=production webpack --config webpack-dist.config.js && rm -rf .public"
+    "pub-linux": "rm -rf docs && cross-env NODE_ENV=production webpack --config webpack-dist.config.js",
+    "pub-window": "rimraf -rf docs && cross-env NODE_ENV=production webpack --config webpack-dist.config.js"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

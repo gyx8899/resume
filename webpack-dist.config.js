@@ -21,7 +21,7 @@ function publishGhPages() {
   });
 }
 
-const outputPath = path.resolve(__dirname, '.public');
+const outputPath = path.resolve(__dirname, 'docs');
 module.exports = {
   output: {
     path: outputPath,
@@ -96,18 +96,23 @@ module.exports = {
     }),
     new EndWebpackPlugin(async () => {
       // 自定义域名
-      fs.writeFileSync(path.resolve(outputPath, 'CNAME'), 'https://gyx8899.github.io/resume');
+      // fs.writeFileSync(path.resolve(outputPath, 'CNAME'), 'https://gyx8899.github.io/resume');
 
       await publishGhPages();
 
       // 调用 Chrome 渲染出 PDF 文件
       const chromePath = findChrome();
-      spawnSync(chromePath, ['--headless', '--disable-gpu', `--print-to-pdf=${path.resolve(outputPath, '简历-郭颖新-Web前端开发工程师.pdf')}`,
-        'https://gyx8899.github.io/resume' // 这里注意改成你的在线简历的网站
+      spawnSync(chromePath, [
+        '--headless',
+        '--disable-gpu',
+        '--run-all-compositor-stages-before-draw',
+        `--print-to-pdf=${path.resolve(outputPath, '简历-郭颖新-Web前端开发工程师.pdf')}`,
+        '--no-margins',
+        'http://localhost:8080/' // 这里注意改成你的在线简历的网站
       ]);
 
       // 重新发布到 ghpages
-      await publishGhPages();
+      // await publishGhPages();
     }),
   ]
 };
