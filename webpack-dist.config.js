@@ -106,6 +106,7 @@ module.exports = {
         '--headless',
         '--disable-gpu',
         '--run-all-compositor-stages-before-draw',
+        '--print-to-pdf-no-header',
         `--print-to-pdf=${path.resolve(outputPath, '简历-郭颖新-Web前端开发工程师.pdf')}`,
         '--no-margins',
         'http://localhost:8080/' // 这里注意改成你的在线简历的网站
