@@ -378,4 +378,7 @@ a {
   @page {
     margin: 0;
   }
+  .hidden-print {
+    display: none;
+  }
 }
