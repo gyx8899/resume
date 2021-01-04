@@ -158,7 +158,6 @@ a {
   .contact {
     float: right;
     text-align: right;
-    padding-right: 5px;
     ul {
       margin: 8px 0 4px;
       @media screen and (max-width: 720px) {
@@ -189,6 +188,9 @@ a {
           .iconfont {
             fill: #fff;
             vertical-align: text-top;
+            @media print {
+              fill: #000;
+            }
             @media screen and (max-width: 720px) {
               margin: 5px 8px;
             }
